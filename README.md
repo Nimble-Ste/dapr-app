@@ -1,2 +1,2 @@
-# dapr-app
+# dapr
 Just a sample app using dapr
