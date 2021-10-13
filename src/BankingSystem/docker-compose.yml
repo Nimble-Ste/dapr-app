@@ -9,14 +9,23 @@ services:
     ports:
       - "6379:6379"
 
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - "5672:5672"
+
+  dapr-placement:
+    image: "daprio/dapr:1.0.0"
+    command: ["./placement", "-port", "50000", "-log-level", "debug"]
+    ports:
+      - "50000:50000"
+
   cashmachine:
     image: ${DOCKER_REGISTRY-}cashmachine
     build:
       context: .
       dockerfile: CashMachine/Dockerfile
     ports:
-      #- "5101:80"
-      #- "9101:81"
       - "50001:50001"
 
   cashmachine-dapr:
@@ -34,15 +43,30 @@ services:
       context: .
       dockerfile: BankBackend/Dockerfile
     ports:
-      #- "5102:80"
-      #- "9102:81"
       - "50002:50001"
 
   bankbackend-dapr:
     image: "daprio/daprd:latest"
-    command: [ "./daprd", "-app-id", "bankbackend", "-app-port", "80" , "-components-path", "/components", ]
+    command: [ "./daprd", "-app-id", "bankbackend", "-app-port", "80" , "-components-path", "/components", "-placement-host-address", "dapr-placement:50000",]
     depends_on:
       - bankbackend
     network_mode: "service:bankbackend"
+    volumes:
+      - "./dapr/components/:/components"
+
+  transactionmonitor:
+    image: ${DOCKER_REGISTRY-}transactionmonitor
+    build:
+      context: .
+      dockerfile: TransactionMonitor/Dockerfile
+    ports:
+      - "50003:50001"
+
+  transactionmonitor-dapr:
+    image: "daprio/daprd:latest"
+    command: [ "./daprd", "-app-id", "transactionmonitor", "-app-port", "80" , "-components-path", "/components", ]
+    depends_on:
+      - transactionmonitor
+    network_mode: "service:transactionmonitor"
     volumes:
       - "./dapr/components/:/components"

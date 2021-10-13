@@ -1,16 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace BankBackend
+
+namespace TransactionMonitor
 {
     public class Startup
     {
@@ -30,6 +25,7 @@ namespace BankBackend
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCloudEvents();
 
             if (env.IsDevelopment())
             {
@@ -38,13 +34,12 @@ namespace BankBackend
 
             app.UseRouting();
 
-            app.UseCloudEvents();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapSubscribeHandler();
             });
         }
     }

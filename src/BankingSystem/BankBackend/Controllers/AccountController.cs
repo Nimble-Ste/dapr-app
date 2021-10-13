@@ -55,6 +55,13 @@ namespace BankBackend.Controllers
 
             await daprClient.SaveStateAsync<List<BankAccount>>(storeName, key, accounts);
 
+            await daprClient.PublishEventAsync<Transaction>("pubsub", "newTransaction", new Transaction
+            {
+                AccountId = withdrawalRequest.AccountNumber,
+                Amount = withdrawalRequest.Amount,
+                TransactionType = TransactionType.Withdrawal
+            });
+
             return await this.GetAccountsAsync();
         }
 

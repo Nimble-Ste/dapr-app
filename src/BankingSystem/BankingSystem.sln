@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankBackend", "BankBackend\
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{EDCE6748-911A-4867-B966-B2AEA3E1BF04}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionMonitor", "TransactionMonitor\TransactionMonitor.csproj", "{D65795FD-9B68-4913-8418-A21CA24091A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{EDCE6748-911A-4867-B966-B2AEA3E1BF04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDCE6748-911A-4867-B966-B2AEA3E1BF04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDCE6748-911A-4867-B966-B2AEA3E1BF04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D65795FD-9B68-4913-8418-A21CA24091A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D65795FD-9B68-4913-8418-A21CA24091A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D65795FD-9B68-4913-8418-A21CA24091A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D65795FD-9B68-4913-8418-A21CA24091A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
