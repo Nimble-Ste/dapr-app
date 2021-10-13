@@ -1,0 +1,28 @@
+﻿@page
+@using CashMachine.Models
+
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    @foreach (var account in (IEnumerable<BankAccount>)ViewData["Accounts"])
+    {
+        <p>Account @account.AccountNumber has  £@account.Balance</p>
+    }
+
+
+    @using (Html.BeginForm(FormMethod.Post))
+    {
+        WithdrawalRequest request = new WithdrawalRequest();
+
+        @Html.TextBoxFor(m => request.AccountNumber)
+        @Html.TextBoxFor(m => request.Amount)
+
+        <input type="submit" />
+    }
+</div>

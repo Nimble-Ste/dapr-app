@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashMachine", "CashMachine\CashMachine.csproj", "{379A4672-0695-44A7-A211-EE40FD118E91}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankBackend", "BankBackend\BankBackend.csproj", "{01442F5C-E562-462E-8732-ABE3CBDE4526}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{EDCE6748-911A-4867-B966-B2AEA3E1BF04}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{379A4672-0695-44A7-A211-EE40FD118E91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{379A4672-0695-44A7-A211-EE40FD118E91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{379A4672-0695-44A7-A211-EE40FD118E91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{379A4672-0695-44A7-A211-EE40FD118E91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01442F5C-E562-462E-8732-ABE3CBDE4526}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01442F5C-E562-462E-8732-ABE3CBDE4526}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01442F5C-E562-462E-8732-ABE3CBDE4526}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01442F5C-E562-462E-8732-ABE3CBDE4526}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDCE6748-911A-4867-B966-B2AEA3E1BF04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDCE6748-911A-4867-B966-B2AEA3E1BF04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDCE6748-911A-4867-B966-B2AEA3E1BF04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDCE6748-911A-4867-B966-B2AEA3E1BF04}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {29B44751-4D2D-4542-B722-1C047B4A4297}
+	EndGlobalSection
+EndGlobal

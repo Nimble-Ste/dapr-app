@@ -1,0 +1,48 @@
+version: '3.4'
+
+services:
+
+  redis:
+    container_name: "dapr_redis" 
+    image: redis:alpine
+    hostname: bankstate
+    ports:
+      - "6379:6379"
+
+  cashmachine:
+    image: ${DOCKER_REGISTRY-}cashmachine
+    build:
+      context: .
+      dockerfile: CashMachine/Dockerfile
+    ports:
+      #- "5101:80"
+      #- "9101:81"
+      - "50001:50001"
+
+  cashmachine-dapr:
+    image: "daprio/daprd:latest"
+    command: [ "./daprd", "-app-id", "cashmachine", "-app-port", "80", "-components-path", "/components", ]
+    depends_on:
+      - cashmachine
+    network_mode: "service:cashmachine"
+    volumes:
+      - "./dapr/components/:/components"
+
+  bankbackend:
+    image: ${DOCKER_REGISTRY-}bankbackend
+    build:
+      context: .
+      dockerfile: BankBackend/Dockerfile
+    ports:
+      #- "5102:80"
+      #- "9102:81"
+      - "50002:50001"
+
+  bankbackend-dapr:
+    image: "daprio/daprd:latest"
+    command: [ "./daprd", "-app-id", "bankbackend", "-app-port", "80" , "-components-path", "/components", ]
+    depends_on:
+      - bankbackend
+    network_mode: "service:bankbackend"
+    volumes:
+      - "./dapr/components/:/components"
